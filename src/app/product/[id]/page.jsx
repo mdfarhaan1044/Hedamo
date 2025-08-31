@@ -1,9 +1,15 @@
 "use client";
 import { useEffect, useState } from "react";
+import React from "react";
+
 import { productsService } from "../../../services/products.service";
 import Brand from "../../../components/Brand/brand";
-import React from "react";
 import Price from "../../../components/Price/price";
+import Title from "../../../components/Title/title";
+import Stock from "../../../components/Stock/stock";
+import Description from "../../../components/Description/desc";
+import Reviews from "../../../components/Reviews/review";
+import ShippingInfo from "../../../components/ShippingInfo/shippingInfo";
 
 export default function ProductPage({ params }) {
   const { id } = React.use(params);
@@ -20,11 +26,13 @@ export default function ProductPage({ params }) {
 
   return (
     <div key={product.id}>
-      <h1>Product Page {product.title}</h1>
+     
       <img src={product.thumbnail} alt={product.title} className="mb-2" />
-      <p>{product.description}</p>
-    
-      <p>Stock: {product.stock}</p>
+      <Reviews product={product} />
+      <ShippingInfo product={product} />
+          <Description product={product} />
+          <Stock product={product} />
+          <Title product={product} />
           <Brand product={product} /> 
           <Price product={product} /> 
     </div>

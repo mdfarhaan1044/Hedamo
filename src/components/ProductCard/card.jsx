@@ -3,36 +3,18 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { productsService } from "../../services/products.service";
 
-
-
 export default function ProductCard() {
   const [products, setProducts] = useState([]);
   const [expanded, setExpanded] = useState({});
-  const [bgClasses, setBgClasses] = useState({});
-
-  useEffect(() => {
-    const colors = ["#2F4F4F", "#F5C97A", "#FDF6E3"];
-    const assigned = {};
-
-    products.forEach((product) => {
-      const randomColor = colors[Math.floor(Math.random() * colors.length)];
-      assigned[product.id] = randomColor;
-    });
-
-    setBgClasses(assigned);
-  }, [products]);
-
 
   useEffect(() => {
     productsService.fetchProducts().then(setProducts);
   }, []);
 
-
-
   const toggleExpand = (id) => {
     setExpanded((prev) => ({
       ...prev,
-      [id]: !prev[id], 
+      [id]: !prev[id],
     }));
   };
 
@@ -41,29 +23,36 @@ export default function ProductCard() {
       {products.map((product) => (
         <div
           key={product.id}
-          style={{ backgroundColor: bgClasses[product.id] }}
-          className='flex flex-col border border-black rounded-xl shadow-md p-4 transition-all'
+          className="bg-orange-200 flex flex-col item-center border border-black rounded-xl shadow-md p-4 transition-all"
         >
-          <div className="cursor-pointer" >
-            <Link href={`/product/${product.id}`}>
-            <img src={product.thumbnail} alt={product.title} className="mb-2" />
+          <div className="flex flex-col justify-center">
+            <img
+              src={product.thumbnail}
+              alt={product.title}
+              className="border border-black rounded-xl"
+            />
             <h2 className="text-xl font-bold">{product.title}</h2>
-            </Link>
           </div>
+          <p className="text-lg font-bold mt-2">${product.price}</p>
+          <p className="text-sm">Stock: {product.stock}</p>
 
           {expanded[product.id] && (
             <p className="text-sm mt-2">{product.description}</p>
           )}
 
-          <p className="text-lg font-bold mt-2">${product.price}</p>
-          <p className="text-sm">Stock: {product.stock}</p>
-
-          <button
-            className="text-blue-600 mt-2 underline cursor-pointer"
-            onClick={() => toggleExpand(product.id)}
-          >
-            {expanded[product.id] ? "View less" : "View more"}
-          </button>
+          <div className="flex flex-row grid grid-cols-2 gap-5"> 
+            <button
+              className="text-white mt-1 bg-orange-500 border border-white rounded-3xl p-3 cursor-pointer"
+              onClick={() => toggleExpand(product.id)}
+            >
+              {expanded[product.id] ? "View less" : "View more"}
+            </button>
+            <Link href={`/product/${product.id}`}
+              className="text-center text-white mt-1 bg-amber-900 border border-white rounded-3xl p-3 cursor-pointer">
+                Details
+              
+            </Link>
+          </div>
         </div>
       ))}
     </div>
