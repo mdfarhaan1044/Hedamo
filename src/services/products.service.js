@@ -1,4 +1,4 @@
-export class ProductsService {
+class ProductsService {
   async fetchProducts() {
     if (
       process.env.NEXT_PUBLIC_API_URL &&
@@ -14,3 +14,5 @@ export class ProductsService {
     }
   }
 }
+
+export const productsService = new ProductsService();

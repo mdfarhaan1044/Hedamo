@@ -1,13 +1,15 @@
 "use client";
 import { useEffect, useState } from "react";
-import { ProductsService } from "../../services/products.service";
+import Link from "next/link";
+import { productsService } from "../../services/products.service";
+
+
 
 export default function ProductCard() {
   const [products, setProducts] = useState([]);
-  const service = new ProductsService();
-
+  
   useEffect(() => {
-    service.fetchProducts().then(setProducts);
+    productsService.fetchProducts().then(setProducts);
   }, []);
 
 
@@ -27,9 +29,11 @@ export default function ProductCard() {
           key={product.id}
           className="flex flex-col border border-black rounded-xl shadow-md p-4 transition-all"
         >
-          <div className="cursor-pointer">
+          <div className="cursor-pointer" >
+            <Link href={`/product/${product.id}`}>
             <img src={product.thumbnail} alt={product.title} className="mb-2" />
             <h2 className="text-xl font-bold">{product.title}</h2>
+            </Link>
           </div>
 
           {expanded[product.id] && (
