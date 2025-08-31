@@ -7,13 +7,27 @@ import { productsService } from "../../services/products.service";
 
 export default function ProductCard() {
   const [products, setProducts] = useState([]);
-  
+  const [expanded, setExpanded] = useState({});
+  const [bgClasses, setBgClasses] = useState({});
+
+  useEffect(() => {
+    const colors = ["#2F4F4F", "#F5C97A", "#FDF6E3"];
+    const assigned = {};
+
+    products.forEach((product) => {
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+      assigned[product.id] = randomColor;
+    });
+
+    setBgClasses(assigned);
+  }, [products]);
+
+
   useEffect(() => {
     productsService.fetchProducts().then(setProducts);
   }, []);
 
 
-  const [expanded, setExpanded] = useState({});
 
   const toggleExpand = (id) => {
     setExpanded((prev) => ({
@@ -23,11 +37,12 @@ export default function ProductCard() {
   };
 
   return (
-    <div className="grid grid-cols-3 gap-4 m-4">
+    <div className="grid grid-cols-3 gap-4 m-4 p-8">
       {products.map((product) => (
         <div
           key={product.id}
-          className="flex flex-col border border-black rounded-xl shadow-md p-4 transition-all"
+          style={{ backgroundColor: bgClasses[product.id] }}
+          className='flex flex-col border border-black rounded-xl shadow-md p-4 transition-all'
         >
           <div className="cursor-pointer" >
             <Link href={`/product/${product.id}`}>
