@@ -5,7 +5,8 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat; */
-  background: #fae5d3;
+  background: linear-gradient(to bottom right, #e0e7ff, #f3e8ff, #fce7f3);
+
 
   font-family: Arial, Helvetica, sans-serif;
 }
