@@ -6,8 +6,17 @@ export default function Reviews({ product }) {
   if (!product) return null;
 
   return (
-    <div className="w-full max-w-full mx-auto">
-      <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-black text-center mb-6">
+    <div
+      className="w-full max-w-full mx-auto p-5 bg-[#f0f0f0] rounded-2xl shadow-[0_4px_12px_rgba(0,0,0,0.25)] 
+  transition-all duration-300 ease-in-out hover:shadow-[0_8px_20px_rgba(0,0,0,0.35)] hover:scale-[1.02]"
+    >
+      <h2
+        className="text-xl sm:text-2xl md:text-3xl font-bold text-black text-center mb-6 p-5  bg-gradient-to-r from-purple-500 to-indigo-600 
+                         rounded-[30px] shadow-[0_4px_12px_rgba(0,0,0,0.25)]
+                         p-4 sm:p-6 md:p-7 space-y-3 md:space-y-4
+                         transition-all duration-300 
+                         hover:scale-105 hover:shadow-[inset_5px_5px_10px_#bebebe,inset_-5px_-5px_10px_#ffffff]"
+      >
         Reviews
       </h2>
 
