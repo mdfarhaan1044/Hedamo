@@ -26,14 +26,14 @@ export default function ProductPage({ params }) {
   if (!product) return <p className="text-center text-gray-500">Loading...</p>;
 
   return (
-    <div className="bg-gradient-to-r from-amber-600 to-orange-600 min-h-screen py-8 px-4 sm:px-6 lg:px-12 flex flex-col items-center">
+    <div className=" min-h-screen py-8 px-4 sm:px-6 lg:px-12 flex flex-col items-center">
       <div className="flex justify-center mb-6 w-full">
         <Title product={product} />
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 w-full max-w-6xl mb-8">
         <div className="flex justify-center">
-          <div className="bg-gradient-to-r from-purple-500 to-indigo-600 rounded-[40px] p-4 transition-all duration-300 hover:scale-105 hover:shadow-[0_6px_20px_rgba(0,0,0,0.3)]">
+          <div className=" rounded-[40px] p-4 transition-all duration-300 hover:scale-105 hover:shadow-[0_6px_20px_rgba(0,0,0,0.3)]">
             <img
               src={product.thumbnail}
               alt={product.title}

@@ -22,11 +22,17 @@ export default function ProductCard() {
 
         return (
           <div
+            style={{ background: "var(--color-card)" }}
             key={product.id}
-            className="py-3 px-3 group w-[260px] bg-[#e0e0e0] rounded-xl overflow-hidden mx-auto
+            className="py-3 px-3 group w-[260px]  rounded-xl overflow-hidden mx-auto
                        shadow-lg transition-transform duration-300 hover:-translate-y-1 hover:shadow-2xl"
           >
-            <div className="p-4 flex flex-col text-black">
+            <div
+              style={{
+                color: "var(--color-heading)",
+              }}
+              className="p-4 flex flex-col "
+            >
               <div className="relative w-full h-40 rounded-lg overflow-hidden mb-3">
                 <img
                   src={product.thumbnail}
@@ -57,17 +63,19 @@ export default function ProductCard() {
                 <button
                   onClick={() => toggleExpand(product.id)}
                   aria-expanded={isExpanded}
-                  className="flex-1 text-sm font-medium text-white bg-gradient-to-r from-purple-500 to-indigo-600
+                  style={{ background: "var(--color-view)" }}
+                  className="flex-1 text-sm font-medium text-white 
                              rounded-lg py-2 px-3 shadow-md transition duration-200
-                             hover:from-purple-600 hover:to-indigo-700 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
+                             hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
                 >
                   {isExpanded ? "View less" : "View more"}
                 </button>
                 <Link
                   href={`/product/${product.id}`}
-                  className="flex-1 text-sm font-medium text-center text-white bg-gradient-to-r from-amber-600 to-orange-600
+                  style={{ background: "var(--color-detail)" }}
+                  className="flex-1 text-sm font-medium text-center text-white 
                              rounded-lg py-2 px-3 shadow-md transition duration-200
-                             hover:from-amber-700 hover:to-orange-700 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
+                              hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
                 >
                   Details
                 </Link>

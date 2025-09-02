@@ -11,7 +11,11 @@ export default function Reviews({ product }) {
   transition-all duration-300 ease-in-out hover:shadow-[0_8px_20px_rgba(0,0,0,0.35)] hover:scale-[1.02]"
     >
       <h2
-        className="text-xl sm:text-2xl md:text-3xl font-bold text-black text-center mb-6 p-5  bg-gradient-to-r from-purple-500 to-indigo-600 
+        style={{
+          background: "var(--color-review)",
+          color: "var(--color-heading)",
+        }}
+        className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-6 p-5   
                          rounded-[30px] shadow-[0_4px_12px_rgba(0,0,0,0.25)]
                          p-4 sm:p-6 md:p-7 space-y-3 md:space-y-4
                          transition-all duration-300 
@@ -25,8 +29,9 @@ export default function Reviews({ product }) {
           {product.reviews.map((review, index) => (
             <div
               key={index}
+              style={{ background: "var(--color-review)" }}
               className="flex flex-col w-full
-                         bg-gradient-to-r from-purple-500 to-indigo-600 
+                        
                          rounded-[30px] shadow-[0_4px_12px_rgba(0,0,0,0.25)]
                          p-4 sm:p-6 md:p-7 space-y-3 md:space-y-4
                          transition-all duration-300 
