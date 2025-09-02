@@ -7,12 +7,10 @@ export default function Reviews({ product }) {
 
   return (
     <div className="w-full max-w-full mx-auto">
-      {/* Section Title */}
       <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-black text-center mb-6">
         Reviews
       </h2>
 
-      {/* Reviews List in Column Layout */}
       {product.reviews && product.reviews.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {product.reviews.map((review, index) => (
@@ -25,7 +23,6 @@ export default function Reviews({ product }) {
                          transition-all duration-300 
                          hover:scale-105 hover:shadow-[inset_5px_5px_10px_#bebebe,inset_-5px_-5px_10px_#ffffff]"
             >
-              {/* Rating + Date */}
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <div className="flex items-center">
                   {[...Array(5)].map((_, i) => (
@@ -42,12 +39,10 @@ export default function Reviews({ product }) {
                 </span>
               </div>
 
-              {/* Comment */}
               <p className="text-sm sm:text-base md:text-lg text-white italic break-words">
                 “{review.comment}”
               </p>
 
-              {/* Reviewer Info */}
               <div className="text-[10px] sm:text-xs md:text-sm text-gray-200 mt-2 break-words">
                 <p className="font-medium">{review.reviewerName}</p>
                 <p>{review.reviewerEmail}</p>
