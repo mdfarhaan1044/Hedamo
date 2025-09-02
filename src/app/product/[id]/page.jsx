@@ -70,7 +70,7 @@ export default function ProductPage({ params }) {
         </div>
       </div>
 
-      <div className="w-[100vh] ">
+      <div className="w-fit ">
         <Reviews product={product} />
       </div>
     </div>
