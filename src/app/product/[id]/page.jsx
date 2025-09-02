@@ -23,7 +23,12 @@ export default function ProductPage({ params }) {
     });
   }, [id]);
 
-  if (!product) return <p className="text-center text-gray-500">Loading...</p>;
+  if (!product)
+    return (
+      <p className="text-center text-gray-500 mt-20 font-bold text-2xl fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        Loading...
+      </p>
+    );
 
   return (
     <div className=" min-h-screen py-8 px-4 sm:px-6 lg:px-12 flex flex-col items-center">
